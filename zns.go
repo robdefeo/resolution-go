@@ -5,8 +5,8 @@ import (
 	"strings"
 
 	"github.com/unstoppabledomains/resolution-go/v2/namingservice"
+	"github.com/unstoppabledomains/resolution-go/v2/zil"
 
-	"github.com/Zilliqa/gozilliqa-sdk/provider"
 	"github.com/unstoppabledomains/resolution-go/v2/dnsrecords"
 )
 
@@ -81,7 +81,7 @@ func (zb *znsBuilder) SetNetwork(network string) ZnsBuilder {
 // Build Zns instance
 func (zb *znsBuilder) Build() (*Zns, error) {
 	if zb.provider == nil {
-		zb.provider = provider.NewProvider(znsDefaultProvider)
+		zb.provider = zil.NewProvider(znsDefaultProvider)
 	}
 	znsRegistry := znsMainnetRegistry
 	if zb.network == "testnet" {

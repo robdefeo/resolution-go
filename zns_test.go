@@ -3,12 +3,12 @@ package resolution
 import (
 	"testing"
 
-	"github.com/Zilliqa/gozilliqa-sdk/provider"
 	"github.com/stretchr/testify/assert"
 	"github.com/unstoppabledomains/resolution-go/v2/dnsrecords"
+	"github.com/unstoppabledomains/resolution-go/v2/zil"
 )
 
-var zns, _ = NewZnsBuilder().SetProvider(provider.NewProvider("https://dev-api.zilliqa.com")).SetNetwork("testnet").Build()
+var zns, _ = NewZnsBuilder().SetProvider(zil.NewProvider("https://dev-api.zilliqa.com")).SetNetwork("testnet").Build()
 
 func TestZnsBuilder(t *testing.T) {
 	t.Parallel()
@@ -18,7 +18,7 @@ func TestZnsBuilder(t *testing.T) {
 
 func TestZnsBuilderSetProvider(t *testing.T) {
 	t.Parallel()
-	znsProvider := provider.NewProvider("https://dev-api.zilliqa.com")
+	znsProvider := zil.NewProvider("https://dev-api.zilliqa.com")
 	builder := NewZnsBuilder()
 	builder.SetProvider(znsProvider)
 	znsService, err := builder.Build()
